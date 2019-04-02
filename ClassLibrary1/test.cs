@@ -46,5 +46,12 @@ namespace ClassLibrary1
             IWebElement element = webDriver.FindElement(By.XPath("//*[@id=\"layout\"]/div[2]/div[2]/div[1]/ul/li[2]/a"));
             bool status = element.Enabled;
         }
+
+        [TestCase]
+        public void link_test()
+        {
+            webDriver.Url = "https://sibsutis.ru/";
+            
+        }
     }
 }
