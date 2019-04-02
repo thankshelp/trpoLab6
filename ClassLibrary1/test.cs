@@ -17,8 +17,8 @@ namespace ClassLibrary1
         [TestCase]
         public void mainTitle()
         {
-            webDriver.Url = "https://sibsutis.ru/";
-            Assert.AreEqual("Сибирский государственный университет телекоммуникаций и информатики", webDriver.Title);
+            webDriver.Url = "https://shikimori.org/";
+            Assert.AreEqual("Шикимори - энциклопедия аниме и манги", webDriver.Title);
             webDriver.Close();
         }
 
@@ -31,27 +31,32 @@ namespace ClassLibrary1
         [TestCase]
         public void search_test()
         {
-            webDriver.Url = "https://sibsutis.ru/";
-            IWebElement search = webDriver.FindElement(By.XPath("//*[@id=\"qqq\"]"));
-            search.SendKeys("мрм");
-
-            IWebElement button = webDriver.FindElement(By.XPath("//*[@id=\"layout\"]/div[2]/div[2]/div[2]/div[3]/form/input[2]"));
+            webDriver.Url = "https://shikimori.org/";
+            IWebElement button = webDriver.FindElement(By.XPath("//*[@id=\"dashboards_show\"]/header/div[2]/div[1]/div[2]"));
             button.Click();
+
+            IWebElement search = webDriver.FindElement(By.XPath("//*[@id=\"dashboards_show\"]/header/div[2]/div[3]/div/div/input"));
+            search.SendKeys("хёка");
+            
         }
 
         [TestCase]
         public void see_test()
         {
-            webDriver.Url = "https://sibsutis.ru/";
-            IWebElement element = webDriver.FindElement(By.XPath("//*[@id=\"layout\"]/div[2]/div[2]/div[1]/ul/li[2]/a"));
+            webDriver.Url = "https://shikimori.org/";
+            IWebElement element = webDriver.FindElement(By.XPath("//*[@id=\"dashboards_show\"]/section/div[2]/div[1]/div[1]/a"));
             bool status = element.Enabled;
         }
 
         [TestCase]
         public void link_test()
         {
-            webDriver.Url = "https://sibsutis.ru/";
-            
+            webDriver.Url = "https://shikimori.org/";
+            IWebElement button = webDriver.FindElement(By.XPath("//*[@id=\"dashboards_show\"]/header/div[2]/div[1]/div[2]"));
+            button.Click();
+
+            IWebElement element = webDriver.FindElement(By.XPath("//*[@id=\"dashboards_show\"]/header/div[2]/div[3]/div/ul/li[1]"));
+            element.Click();
         }
     }
 }
